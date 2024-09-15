@@ -23,3 +23,25 @@
 1726425943958:task-cli list to-do
 1726425954238:task-cli list in-progress
 1726426015236:task-cli list done
+1726441761994:help
+1726441787958:task-cli
+1726441799078:task-cli delete
+1726441809360:task-cli delete 1
+1726441828750:task-cli delete 2
+1726441852870:task-cli add "take a shower"
+1726441890212:task-cli list
+1726441916669:task-cli update 2 "buy clothes"
+1726441935370:task-cli update 1 "take a shower with my cat"
+1726441960564:task-cli mark-in-progress 1
+1726442047628:task-cli list
+1726442060230:task-cli add "take a shower"
+1726442065873:task-cli list
+1726442139431:task-cli update 1 "take a shower with my cats"
+1726442149419:task-cli list
+1726442191046:help
+1726442199799:task-cli list donde
+1726442213927:task-cli list done
+1726442241097:task-cli list in-progress
+1726442247563:task-cli list to-do
+1726442264491:task-cli mark-in-progress 1
+1726442273344:task-cli list

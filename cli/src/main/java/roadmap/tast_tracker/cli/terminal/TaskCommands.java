@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import roadmap.tast_tracker.cli.enums.TaskStatus;
+import roadmap.tast_tracker.cli.model.Task;
 import roadmap.tast_tracker.cli.service.TaskService;
+
+import java.util.List;
 
 @ShellComponent
 public class TaskCommands {
@@ -38,31 +41,31 @@ public class TaskCommands {
 
     @ShellMethod(key = "task-cli mark-in-progress", value = "mark a task as in progress by ID")
     public String makeTaskInProgress(Long id){
-        return "Task marked as in progress successfully";
+        return taskService.updateTaskStatus(id, TaskStatus.IN_PROGRESS);
     }
 
     @ShellMethod(key = "task-cli mark-done", value = "mark a task as done by ID")
     public String makeTaskDone(Long id){
-        return "Task marked as done successfully";
+        return taskService.updateTaskStatus(id, TaskStatus.DONE);
     }
 
     @ShellMethod(key = "task-cli list", value = "list all tasks")
-    public String listTasks(){
-        return "Tasks listed successfully";
+    public List<Task> listTasks(){
+        return taskService.getAllTasks();
     }
 
     @ShellMethod(key = "task-cli list to-do", value = "list all to do tasks")
-    public String listToDoTasks(){
-        return "Todo tasks listed successfully";
+    public List<Task> listToDoTasks(){
+        return taskService.getTasksByStatus(TaskStatus.TO_DO);
     }
 
     @ShellMethod(key = "task-cli list in-progress", value = "list all in progress tasks")
-    public String listInProgressTasks(){
-        return "In progress tasks listed successfully";
+    public List<Task> listInProgressTasks(){
+        return taskService.getTasksByStatus(TaskStatus.IN_PROGRESS);
     }
 
     @ShellMethod(key = "task-cli list done", value = "list all done tasks")
-    public String listDoneTasks(){
-        return "Done tasks listed successfully";
+    public List<Task> listDoneTasks(){
+        return taskService.getTasksByStatus(TaskStatus.DONE);
     }
 }
