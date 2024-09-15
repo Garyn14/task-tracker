@@ -1,3 +1,25 @@
 1726374468102:help
 1726374481382:saludar fernando
 1726374548653:quit
+1726422489847:saludar
+1726422498411:saludar "fernando"
+1726422765529:task-cli saludar "fernandiño"
+1726422868595:saludar "fernando"
+1726422982834:task-cli add "buy a car"
+1726423417878:help
+1726423427278:script
+1726423442618:task-cli "buy a car"
+1726423455597:task-cli add "buy a car"
+1726423475189:tas-cli update 1 "buy a motocycle"
+1726423504359:task-cli update 1 "buy a motocycle"
+1726425711735:task-cli add "buy a book"
+1726425733026:task-cli update 1 "buy two books"
+1726425745513:task-cli delete 1
+1726425763081:task-cli mark-to-do 1
+1726425905509:task-cli markin-progress 1
+1726425917830:task-cli mark-in-progress 1
+1726425926024:task-cli mark-done 1
+1726425931928:task-cli list
+1726425943958:task-cli list to-do
+1726425954238:task-cli list in-progress
+1726426015236:task-cli list done
