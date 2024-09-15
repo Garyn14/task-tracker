@@ -5,6 +5,7 @@ import roadmap.tast_tracker.cli.enums.TaskStatus;
 import roadmap.tast_tracker.cli.exception.NotFoundTaskException;
 import roadmap.tast_tracker.cli.model.Task;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class TaskRepositoryImpl implements TaskRepository{
     }
 
     @Override
-    public Task creteTask(String description) {
+    public Task createdTask(String description) {
         Task task = new Task(description);
         tasks.add(task);
         return task;
@@ -34,10 +35,19 @@ public class TaskRepositoryImpl implements TaskRepository{
     }
 
     @Override
-    public Task updateTask(Task task) {
-        Task updatedTask = this.getTaskById(task.getId());
-        updatedTask.setDescription(task.getDescription());
-        updatedTask.setStatus(task.getStatus());
+    public Task updateTaskDescription(Long id, String description) {
+        Task updatedTask = this.getTaskById(id);
+        updatedTask.setDescription(description);
+        updatedTask.setUpdatedAt(LocalDateTime.now());
+
+        return updatedTask;
+    }
+
+    @Override
+    public Task updateTaskStatus(Long id, TaskStatus status) {
+        Task updatedTask = this.getTaskById(id);
+        updatedTask.setStatus(status);
+        updatedTask.setUpdatedAt(LocalDateTime.now());
 
         return updatedTask;
     }

@@ -1,28 +1,39 @@
 package roadmap.tast_tracker.cli.terminal;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
+import roadmap.tast_tracker.cli.enums.TaskStatus;
+import roadmap.tast_tracker.cli.service.TaskService;
 
 @ShellComponent
 public class TaskCommands {
+
+    private final TaskService taskService;
+
+    @Autowired
+    public TaskCommands(TaskService taskService) {
+        this.taskService = taskService;
+    }
+
     @ShellMethod(key = "task-cli add", value = "add new task")
-    public String addTask(String task){
-        return "Task added successfully (ID: #)";
+    public String addTask(String description){
+        return taskService.addTask(description);
     }
 
     @ShellMethod(key = "task-cli update", value = "update a task by ID")
-    public String updateTask(Long id, String task){
-        return "Task updated successfully";
+    public String updateTask(Long id, String description){
+        return taskService.updateTaskDescription(id, description);
     }
 
     @ShellMethod(key = "task-cli delete", value = "delete a task by ID")
     public String deleteTask(Long id){
-        return "Task deleted successfully";
+        return taskService.deleteTask(id);
     }
 
     @ShellMethod(key = "task-cli mark-to-do", value = "mark a task as to do by ID")
     public String makeTaskToDo(Long id){
-        return "Task marked as to do successfully";
+        return taskService.updateTaskStatus(id, TaskStatus.TO_DO);
     }
 
     @ShellMethod(key = "task-cli mark-in-progress", value = "mark a task as in progress by ID")
