@@ -19,7 +19,7 @@ public class TaskRepositoryImpl implements TaskRepository{
     }
 
     @Override
-    public Task createdTask(String description) {
+    public Task createTask(String description) {
         Task task = new Task(description);
         tasks.add(task);
         return task;

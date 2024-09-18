@@ -12,13 +12,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class TaskRepositoryTest {
 
     @Nested
-    class Happypath {
+    class HappyPath {
         // Creating a task with a valid description
         @Test
         void test_create_task_with_valid_description() {
             TaskRepository taskRepository = new TaskRepositoryImpl();
             String description = "New Task";
-            Task task = taskRepository.createdTask(description);
+            Task task = taskRepository.createTask(description);
 
             assertNotNull(task);
             assertEquals(description, task.getDescription());
@@ -32,7 +32,7 @@ class TaskRepositoryTest {
         void test_retrieving_task_by_valid_id() {
             TaskRepository taskRepository = new TaskRepositoryImpl();
             String description = "New Task";
-            Task createdTask = taskRepository.createdTask(description);
+            Task createdTask = taskRepository.createTask(description);
 
             Task retrievedTask = taskRepository.getTaskById(createdTask.getId());
 
@@ -48,7 +48,7 @@ class TaskRepositoryTest {
         void test_update_task_description_with_valid_id() {
             TaskRepository taskRepository = new TaskRepositoryImpl();
             String description = "Updated Description";
-            Task task = taskRepository.createdTask("Initial Description");
+            Task task = taskRepository.createTask("Initial Description");
 
             Task updatedTask = taskRepository.updateTaskDescription(task.getId(), description);
 
@@ -61,7 +61,7 @@ class TaskRepositoryTest {
         @Test
         void test_update_task_status_with_valid_id() {
             TaskRepository taskRepository = new TaskRepositoryImpl();
-            Task task = taskRepository.createdTask("Task 1");
+            Task task = taskRepository.createTask("Task 1");
             Long taskId = task.getId();
             TaskStatus newStatus = TaskStatus.IN_PROGRESS;
 
@@ -75,7 +75,7 @@ class TaskRepositoryTest {
         @Test
         void test_delete_task_with_valid_id() {
             TaskRepository taskRepository = new TaskRepositoryImpl();
-            Task task = taskRepository.createdTask("Task to delete");
+            Task task = taskRepository.createTask("Task to delete");
             Long taskId = task.getId();
 
             taskRepository.deleteTask(taskId);
@@ -89,8 +89,8 @@ class TaskRepositoryTest {
         void test_retrieving_all_tasks() {
             TaskRepository taskRepository = new TaskRepositoryImpl();
             List<Task> tasks = new ArrayList<>();
-            Task task1 = taskRepository.createdTask("Task 1");
-            Task task2 = taskRepository.createdTask("Task 2");
+            Task task1 = taskRepository.createTask("Task 1");
+            Task task2 = taskRepository.createTask("Task 2");
             tasks.add(task1);
             tasks.add(task2);
 
@@ -106,9 +106,9 @@ class TaskRepositoryTest {
         @Test
         void test_retrieving_tasks_by_valid_status() {
             TaskRepository taskRepository = new TaskRepositoryImpl();
-            Task task1 = taskRepository.createdTask("Task 1");
-            Task task2 = taskRepository.createdTask("Task 2");
-            Task task3 = taskRepository.createdTask("Task 3");
+            Task task1 = taskRepository.createTask("Task 1");
+            Task task2 = taskRepository.createTask("Task 2");
+            Task task3 = taskRepository.createTask("Task 3");
 
             task1.setStatus(TaskStatus.IN_PROGRESS);
             task2.setStatus(TaskStatus.TO_DO);

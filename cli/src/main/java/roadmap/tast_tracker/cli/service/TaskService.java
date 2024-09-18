@@ -12,4 +12,5 @@ public interface TaskService {
     String updateTaskStatus(Long id, TaskStatus status);
     List<Task> getAllTasks();
     List<Task> getTasksByStatus(TaskStatus status);
+    String downloadTasks();
 }

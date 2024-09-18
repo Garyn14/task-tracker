@@ -6,7 +6,7 @@ import roadmap.tast_tracker.cli.model.Task;
 import java.util.List;
 
 public interface TaskRepository {
-    Task createdTask(String description);
+    Task createTask(String description);
     Task getTaskById(Long id);
     Task updateTaskDescription(Long id, String description);
     Task updateTaskStatus(Long id, TaskStatus status);

@@ -68,4 +68,9 @@ public class TaskCommands {
     public List<Task> listDoneTasks(){
         return taskService.getTasksByStatus(TaskStatus.DONE);
     }
+
+    @ShellMethod(key = "task-cli download", value = "download all tasks")
+    public String downloadTasks(){
+        return taskService.downloadTasks();
+    }
 }
